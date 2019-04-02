@@ -5,18 +5,18 @@ from urllib2 import urlopen as Open
 import csv
 import json
 
-# This url uses latin-1 encoding
-URL = 'https://www.cbssports.com/nfl/stats/playersort/nfl/year-2018-season-regular-category-touchdowns'
-
 def scrape_process(url):
     response = Open(url)
     soup = BeautifulSoup(response.read(), 'lxml')
     return soup
 
 def main():
-    players = sou
-    test = scrape_process(URL)
-    print test.prettify('latin-1')
+    # This url uses latin-1 encoding
+    URL = 'https://www.cbssports.com/nfl/stats/playersort/nfl/year-2018-season-regular-category-touchdowns'
+
+    raw_html = scrape_process(URL)
+    data_table = raw_html.find('table')
+    print data_table.prettify('latin-1')
 
 if __name__ == '__main__':
     main()
