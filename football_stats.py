@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from urllib2 import urlopen as Open
 import csv
 import json
+import itertools
 
 def scrape_process(url):
     response = Open(url)
@@ -18,8 +19,8 @@ def main():
     data_table = raw_html.find('table', class_='data')
     player_info = data_table.find_all('tr')
 
-    for tr in player_info:
-        print tr.prettify()
+    for tr in player_info[2:21]:
+        print tr
 
 if __name__ == '__main__':
     main()
