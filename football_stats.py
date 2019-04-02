@@ -15,8 +15,11 @@ def main():
     URL = 'https://www.cbssports.com/nfl/stats/playersort/nfl/year-2018-season-regular-category-touchdowns'
 
     raw_html = scrape_process(URL)
-    data_table = raw_html.find('table')
-    print data_table.prettify('latin-1')
+    data_table = raw_html.find('table', class_='data')
+    player_info = data_table.find_all('tr')
+
+    for tr in player_info:
+        print tr.prettify()
 
 if __name__ == '__main__':
     main()
