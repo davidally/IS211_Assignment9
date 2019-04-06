@@ -11,8 +11,6 @@ def scrape_process(url):
     soup = BeautifulSoup(response.read(), 'lxml')
     return soup
 
-# [3:21]
-
 
 def main():
     # This url uses latin-1 encoding
@@ -21,7 +19,7 @@ def main():
     raw_html = scrape_process(URL)
     data_table = raw_html.find('table', class_='data')
     player_info = data_table.find_all('tr')
-    trimmed_list = player_info[3:21]
+    trimmed_list = player_info[3:23]
 
     print '\nThe current top 20 players: \n'
     for row in trimmed_list:
