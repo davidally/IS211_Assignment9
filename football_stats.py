@@ -5,6 +5,15 @@ from urllib2 import urlopen as Open
 
 
 def scrape_process(url):
+    """Grabs the raw html from a page and returns it.
+
+    Args:
+        url (string): A URL with html to be processed.
+
+    Returns:
+        string: Raw HTML data. 
+    """
+
     response = Open(url)
     soup = BeautifulSoup(response.read(), 'lxml')
     return soup
