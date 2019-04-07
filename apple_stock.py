@@ -2,8 +2,6 @@
 
 from bs4 import BeautifulSoup
 from urllib2 import urlopen as Open
-import json
-from pprint import pprint
 
 
 def scrape_process(url):
@@ -23,10 +21,10 @@ def main():
     trimmed_list = data_table[1:]
 
     for row in trimmed_list:
-        test = row.find_all('td')
+        row_data = row.find_all('td')
         print 'Day: {}, Closing Price: {}'.format(
-            test[0].text.strip(),
-            test[4].text.strip()
+            row_data[0].text.strip(),
+            row_data[4].text.strip()
         )
 
 
